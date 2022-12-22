@@ -15,13 +15,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate, NavLink } from 'react-router-dom';
-// import { getToken, storeToken } from '../services/LocalStorageService';
-// import { useLoginUserMutation } from '../services/UserAuthApi'
-// import { setUserToken } from '../features/authSlice';
-import { useDispatch } from 'react-redux';
-// import SideBar from '../SideBar/SideBar';
-    
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -38,17 +32,9 @@ function Copyright(props) {
 const theme = createTheme();
 
 const Login = ()=> {
-  // const navigate = useNavigate();
-//   const [ loginUser ] = useLoginUserMutation()
-
     const [login, setLogin] = useState({
         email: '',
         password: '',
-    });
-    const [error, setError] = useState({
-      status: false,
-      msg: "",
-      type: "",
     });
 
     const handleChange = (e) => {
@@ -60,24 +46,7 @@ const Login = ()=> {
         let data = {email:login.email, password:login.password};
         console.log(data);
         
-       const res = await axios.post('http://127.0.0.1:8000/api/login', data);
-          console.log(res);
-          if(res.data && res.data.status === "success"){
-           storeToken(res.data.token);
-            // navigate('/Dashboard');
-          if (res.error && res.error.data.status === "failed") {
-            setError({ status: true, msg: res.error.data.message, type: 'error' })
-          } 
-        }else {
-          setError({ status: true, msg: "All Fields are Required", type: 'error' })
-        }
     }
-    // let token = getToken()
-    // // console.log(token);
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //   dispatch(setUserToken({ token: token }))
-    // }, [token, dispatch])
 
     return (
       <ThemeProvider theme={theme}>
