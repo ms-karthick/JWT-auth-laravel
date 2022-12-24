@@ -23,7 +23,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
-
+    Route::get('user_list', 'user_list');
 });
 
 Route::resource('employee', EmployeeController::class);
